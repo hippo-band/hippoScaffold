@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>com.{projectName}</groupId>
+		<artifactId>impl</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../{projectName}-impl/pom.xml</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>{modualName}-bootstrap</artifactId>
+	<name>{projectName}-{modualName}-bootstrap</name>
+	<packaging>jar</packaging>
+
+	<properties>
+		<appid>com.{projectName}.{modualName}.service</appid>
+	</properties>
+	<dependencies>
+		
+		<dependency>
+			<groupId>com.{projectName}</groupId>
+			<artifactId>{modualName}-impl</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.4</version>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<finalName>${appid}</finalName>
+					<descriptors>
+						<descriptor>${project.basedir}/dist.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
